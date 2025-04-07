@@ -63,4 +63,10 @@ resource "azurerm_windows_virtual_machine" "vm" {
 }
 
 
+resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+  managed_disk_id    = azurerm_managed_disk.data_disks[0].id
+  virtual_machine_id = azurerm_windows_virtual_machine.vm.id
+  lun                = "10"
+  caching            = "ReadWrite"
+}
 
